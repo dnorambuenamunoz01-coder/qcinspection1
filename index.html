@@ -194,7 +194,7 @@ footer{margin-top:18px;border-top:2px solid #c7192d;color:#66716b}
 
 /* Final print pagination and compact photo layout */
 @media print {
- .major-defects-section { break-before: page !important; page-break-before: always !important; }
+ .major-defects-section{break-before:auto!important;page-break-before:auto!important}
  .major-defects-section > h2 { break-after: avoid-page !important; page-break-after: avoid !important; }
  .defect-photo-panel .photo-grid { grid-template-columns: repeat(4,minmax(0,1fr)) !important; gap:4px!important; }
  .defect-photo-panel .photo-card img { height:78px!important; max-height:78px!important; }
@@ -204,6 +204,17 @@ footer{margin-top:18px;border-top:2px solid #c7192d;color:#66716b}
 
 /* Review build v7: active-color photo visibility enforced in DOM and CSS; grower defaults CSG and orchard. */
 </style>
+
+/* Final print pagination: preserve compact photos and keep each photo card intact. */
+@media print {
+  .defect-photo-panel .photo-grid { grid-template-columns: repeat(4,minmax(0,1fr)) !important; gap:4px !important; }
+  .defect-photo-panel .photo-card,
+  .defect-photo-panel .defect-photo-group,
+  .photo-card { break-inside: avoid !important; page-break-inside: avoid !important; }
+  .defect-photo-panel .photo-card img { height:78px !important; max-height:78px !important; }
+  .pie-panel { break-inside: avoid-page !important; page-break-inside: avoid !important; }
+}
+
 </head>
 <body>
 <div class="wrap">
